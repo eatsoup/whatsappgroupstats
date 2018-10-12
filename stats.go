@@ -17,7 +17,7 @@ func help() {
 func getstats(filename string) (map[string]int, map[string]int, string, string) {
 	validline := regexp.MustCompile(`^\d.*\s-\s.*:`)
 	date := regexp.MustCompile(`^\d.-\d.-\d.`)
-	user := regexp.MustCompile(`-\s(\w.*?):`)
+	user := regexp.MustCompile(`-\s(.*?):`)
 	datedb := make(map[string]int)
 	userdb := make(map[string]int)
 	bytesfile, err := ioutil.ReadFile(filename)
