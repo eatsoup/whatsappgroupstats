@@ -17,6 +17,7 @@ How to use?
 
 Example output
 --------------
+```
 Analyzing:      whatsapp.txt
 Start date:     23-11-17
 End date:       03-10-18
@@ -48,3 +49,4 @@ Top 3 days:
    07-09-18 :    551
    03-02-18 :    540
    06-04-18 :    511
+```
