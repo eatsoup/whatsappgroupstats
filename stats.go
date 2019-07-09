@@ -104,7 +104,6 @@ func main() {
 		}
 		fmt.Println("Top 3 days:")
 		for _, record := range top3days(datedb) {
-			// fmt.Printf("   %s :\t %d\n", record.date, record.count)
 			fmt.Println("  ", fillp(record.date, " : "), record.count)
 		}
 	}
