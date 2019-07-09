@@ -77,27 +77,35 @@ func top3days(mapname map[string]int) []datevalue {
 	return tmp
 }
 
+func fillp(text string, append string) string{
+	if len(text) >= 29 {
+		text = text[0:30]
+	}
+	return text + append + strings.Repeat(" ", 30-len(text))
+}
+
 func main() {
 	if len(os.Args) == 1 {
 		help()
 	} else {
 		userdb, datedb, startdate, enddate := getstats(os.Args[1])
-		fmt.Printf("Analyzing: \t%s\n", os.Args[1])
-		fmt.Printf("Start date: \t%s\n", startdate)
-		fmt.Printf("End date: \t%s\n", enddate)
-		fmt.Printf("Total msg: \t%d\n", totalposts(userdb))
-		fmt.Printf("Avg per day: \t%d\n", avgpostperday(datedb))
+		fmt.Println("  ", fillp("Analyzing", " : "), os.Args[1])
+		fmt.Println("  ", fillp("Start date", " : "), startdate)
+		fmt.Println("  ", fillp("End date", " : "), enddate)
+		fmt.Println("  ", fillp("Total msg", " : "), totalposts(userdb))
+		fmt.Println("  ", fillp("Avg per day", " : "), avgpostperday(datedb))
 		fmt.Println("Total messages per user:")
 		for k, v := range userdb {
-			fmt.Println("  ", k, ":\t", v)
+			fmt.Println("  ", fillp(k, " : "), v)
 		}
 		fmt.Println("Average messages per user/day:")
 		for k, v := range userdb {
-			fmt.Println("  ", k, ":\t", v/len(datedb))
+			fmt.Println("  ", fillp(k, " : "), v/len(datedb))
 		}
 		fmt.Println("Top 3 days:")
 		for _, record := range top3days(datedb) {
-			fmt.Printf("   %s :\t %d\n", record.date, record.count)
+			// fmt.Printf("   %s :\t %d\n", record.date, record.count)
+			fmt.Println("  ", fillp(record.date, " : "), record.count)
 		}
 	}
 }
